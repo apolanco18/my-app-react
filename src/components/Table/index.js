@@ -36,7 +36,7 @@ const columns = [
     },
   ];
 
-function createData(name, code, population, size){
+const createData = (name, code, population, size) => {
     const density = population / size;
     return { name, code, population, size, density };
 }

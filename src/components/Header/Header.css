@@ -1,3 +1,9 @@
-.icon-container {
-    margin-right: 15px;
+.link-list {
+    display: flex;
+    justify-content: space-between;
+    width:20%
+}
+
+.link-item {
+    color:antiquewhite
 }

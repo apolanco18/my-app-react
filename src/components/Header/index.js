@@ -1,5 +1,7 @@
-import React from "react"
+import React, {useState, useEffect} from "react"
 import ReactDOM from "react-dom"
+
+import { Link} from "react-router-dom";
 
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -9,6 +11,8 @@ import InputBase from '@material-ui/core/InputBase';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
+
+import './Header.css';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -65,9 +69,19 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-export default function AppHeader() {
+export default function AppHeader(props) {
+
 
     const classes = useStyles();
+
+    const [subTitle, setSubTitle] = useState("ipsusm")
+
+    useEffect(() =>{
+      if(props.name !== "global"){
+        setSubTitle(`${props.name}`)
+      }
+
+  }, [props.name])
 
     return (
         <div className={classes.root}>
@@ -81,8 +95,14 @@ export default function AppHeader() {
             >
                 <MenuIcon />
             </IconButton>
+            <div className='link-list'>
+                <Link className="link-item" to='/'>Home</Link>
+                <Link className="link-item" to='/About'>About</Link>
+                <Link className="link-item" to='/Contact'>Contact</Link>
+
+            </div>
             <Typography className={classes.title} variant="h6" noWrap>
-                Mo's Shoe Shop
+                {subTitle}
             </Typography>
             <div className={classes.search}>
                 <div className={classes.searchIcon}>
