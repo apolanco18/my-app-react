@@ -10,9 +10,12 @@ import {
 import AppHeader from "./components/Header"
 import CenteredGrid from "./components/BodyContainer"
 import Footer from './components/Footer'
+import { Provider } from 'react-redux';
+import store from './lib/redux'
 
 import About from './components/About'
 import Contact from './components/Contact'
+import Home from './components/Home/Home'
 import './App.css';
 
 const App = () => {
@@ -28,20 +31,11 @@ const App = () => {
       
       <div>
 
-      <hr />
-
-      {/*
-        A <Switch> looks through all its children <Route>
-        elements and renders the first one whose path
-        matches the current URL. Use a <Switch> any time
-        you have multiple routes, but you want only one
-        of them to render at a time
-      */}
       <Switch>
         <Route exact path="/">
-          <div>
-            Work In Progress
-          </div>
+          <Provider store={store}>
+            <Home/>
+          </Provider>
         </Route>
         <Route path="/about">
           <About />

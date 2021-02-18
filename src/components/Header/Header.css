@@ -1,9 +1,22 @@
-.link-list {
-    display: flex;
-    justify-content: space-between;
-    width:20%
+.root {
+    flex-grow: 1;
 }
 
-.link-item {
-    color:antiquewhite
+.menu-button {
+    margin-right: 10px;
+}
+
+.title {
+    flex-grow: 1;
+    align-self: center;
+}
+
+.left-side {
+    display: flex;
+    flex-direction: row;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
 }

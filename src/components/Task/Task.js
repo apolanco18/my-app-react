@@ -19,7 +19,7 @@ const Task = ({task: {id,title,state}, onArchiveTask, onPinTask}) => {
                 <input type="text" value={title} readOnly={true} placeholder="Input title"/>
             </div>
 
-            <div className="actions" onClick={event => event.stopProgration()}>
+            <div className="actions" >
                 {state !== 'TASK_ARCHIVED' && (
                     <a onClick={() => onPinTask(id)}>
                         <span className={`icon-star`}/>
