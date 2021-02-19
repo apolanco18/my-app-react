@@ -7,7 +7,7 @@ import {
   Link,
 } from "react-router-dom";
 
-import AppHeader from "./components/Header"
+import Header from "./components/Header/Header"
 import CenteredGrid from "./components/BodyContainer"
 import Footer from './components/Footer'
 import { Provider } from 'react-redux';
@@ -15,8 +15,9 @@ import store from './lib/redux'
 
 import About from './components/About'
 import Contact from './components/Contact'
-import Home from './components/Home/Home'
+import HomeWrapper from './components/Home/HomeWrapper'
 import './App.css';
+import {routes, RouteWithSubRoutes} from './lib/routing';
 
 const App = () => {
   const [globalAppName, setGlobalAppName] = useState("global");
@@ -27,26 +28,20 @@ const App = () => {
   return (
     <Router>
     <div className="App">
-      <AppHeader name={globalAppName}/>
+      <Router>
+        <Header/>
       
-      <div>
-
-      <Switch>
-        <Route exact path="/">
-          <Provider store={store}>
-            <Home/>
-          </Provider>
-        </Route>
-        <Route path="/about">
-          <About />
-        </Route>
-        <Route path="/contact">
-          <Contact />
-        </Route>
-      </Switch>
+        <div>
+          <Switch>
+            {routes.map((route, i) => (
+              <RouteWithSubRoutes key={i} {...route} />
+            ))}
+          </Switch>
+        </div>
+      </Router>
+      
+      <Footer onButtonClick={handleButtonClick}/>
     </div>
-  <Footer onButtonClick={handleButtonClick}/>
-</div>
 </Router>
     
     
