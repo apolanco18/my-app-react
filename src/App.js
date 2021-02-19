@@ -34,7 +34,11 @@ const App = () => {
         <div>
           <Switch>
             {routes.map((route, i) => (
-              <RouteWithSubRoutes key={i} {...route} />
+           
+                (i == 0) 
+                ? <RouteWithSubRoutes key={i} {...route} isFirst={true} />
+                : <RouteWithSubRoutes key={i} {...route} isFirst={false} />
+              
             ))}
           </Switch>
         </div>

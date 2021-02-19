@@ -27,8 +27,16 @@ export const routes = [
     }
 ]
 
-export const RouteWithSubRoutes = (route) => {
+export const RouteWithSubRoutes = (route, isFirst) => {
     return  (
+        (isFirst) ?
+            <Route
+                exact path={route.path}
+                render={props=> (
+                    <route.component {...props} routes={route.routes} />
+                )}
+            />
+        :
         <Route
             path={route.path}
             render={props=> (
